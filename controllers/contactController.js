@@ -14,4 +14,14 @@ const createContact = (req , res)=>{
     res.status(201).json({message:"Create"})
 }
 
-module.exports={getContacts,createContact}
+//@desc Get contact
+//@route Get /api/contact/:id
+//@acess publice
+const getContact =(req, res)=>{
+    res.status(200).json({message:`Get conact for ${req.params.id}`});
+}
+const updateContact=(req , res)=>{
+ 
+    res.status(200).json({message:` Update contact for ${req.params.id}`})
+}
+module.exports={getContacts,createContact,updateContact,getContact}
