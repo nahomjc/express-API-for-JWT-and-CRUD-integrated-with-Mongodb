@@ -16,12 +16,21 @@ const createContact = (req , res)=>{
 
 //@desc Get contact
 //@route Get /api/contact/:id
-//@acess publice
+//@access public
 const getContact =(req, res)=>{
     res.status(200).json({message:`Get conact for ${req.params.id}`});
 }
+//@desc Update contact
+//@route Get /api/contact/:id
+//@access public
 const updateContact=(req , res)=>{
  
     res.status(200).json({message:` Update contact for ${req.params.id}`})
 }
-module.exports={getContacts,createContact,updateContact,getContact}
+//@desc Delete contact
+//@route Get /api/contact/:id
+//@access public
+const deleteContact =(req, res)=>{
+    res.status(200).json({message:` Delete contact for ${req.params.id}`})
+}
+module.exports={getContacts,createContact,updateContact,getContact,deleteContact}
