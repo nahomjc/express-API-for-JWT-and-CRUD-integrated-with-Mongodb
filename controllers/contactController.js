@@ -11,6 +11,13 @@ const getContacts = (req, res) =>{
 //@route Post /api/contacts
 //@access public
 const createContact = (req , res)=>{
+    console.log('requested body',req.body)
+    const {name ,price , quantity}=req.body
+    if(!name||!price||!quantity){
+        res.status(404)
+        throw new Error('all Fields are required')
+
+    }
     res.status(201).json({message:"Create"})
 }
 
