@@ -1,3 +1,5 @@
+
+const asyncHandler =require("express-async-handler")
 //@desc Get all contacts
 //@route Get /api/contacts
 //@access public
@@ -10,11 +12,11 @@ const getContacts = (req, res) =>{
 //@desc Create New contact
 //@route Post /api/contacts
 //@access public
-const createContact = (req , res)=>{
+const createContact =  async(req , res)=>{
     console.log('requested body',req.body)
     const {name ,price , quantity}=req.body
     if(!name||!price||!quantity){
-        res.status(404)
+        res.status(400)
         throw new Error('all Fields are required')
 
     }
@@ -24,20 +26,20 @@ const createContact = (req , res)=>{
 //@desc Get contact
 //@route Get /api/contact/:id
 //@access public
-const getContact =(req, res)=>{
+const getContact =asyncHandler(async(req, res)=>{
     res.status(200).json({message:`Get conact for ${req.params.id}`});
-}
+})
 //@desc Update contact
 //@route Get /api/contact/:id
 //@access public
-const updateContact=(req , res)=>{
+const updateContact=asyncHandler(async(req , res)=>{
  
     res.status(200).json({message:` Update contact for ${req.params.id}`})
-}
+})
 //@desc Delete contact
 //@route Get /api/contact/:id
 //@access public
-const deleteContact =(req, res)=>{
+const deleteContact =asyncHandler(async(req, res)=>{
     res.status(200).json({message:` Delete contact for ${req.params.id}`})
-}
+})
 module.exports={getContacts,createContact,updateContact,getContact,deleteContact}
