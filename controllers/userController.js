@@ -48,7 +48,7 @@ if(user && (await bcrypt.compare(password, user.password))){
             email:user.email,
             id:user.id
         },
-    },process.env.Access_TOKEN_SECRET,{expiresIn:'1m'})
+    },process.env.ACCESS_TOKEN_SECERT,{expiresIn:'1m'})
     res.status(200).json({accessToken})
 }else{
     res.status(401)
@@ -58,7 +58,7 @@ if(user && (await bcrypt.compare(password, user.password))){
 })
 //@desc current user
 //@route get /api/users/current
-//@access public
+//@access private
 const currentUser=asyncHandler(async(req,res)=>{
     res.json({message:'current user'})
 })
