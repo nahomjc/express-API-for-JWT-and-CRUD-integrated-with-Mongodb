@@ -22,7 +22,11 @@ const createContact =  asyncHandler(  async(req , res)=>{
         throw new Error('all Fields are required')
 
     }
-   
+    const  contactAvailable= await Contact.findOne({email})
+    if(contactAvailable){
+        res.status(400)
+        throw new Error("Email is already available")
+    }
     const contact=await Contact.create({name,email,phone,user_id:req.user.id})
     res.status(201).json(contact)
 })
