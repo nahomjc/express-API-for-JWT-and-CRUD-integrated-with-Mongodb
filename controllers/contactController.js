@@ -23,6 +23,7 @@ const createContact =  asyncHandler(  async(req , res)=>{
 
     }
     const  contactAvailable= await Contact.findOne({email})
+//email validation check 
     if(contactAvailable){
         res.status(400)
         throw new Error("Email is already available")
