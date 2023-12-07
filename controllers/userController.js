@@ -24,7 +24,7 @@ const registerUser = asyncHandler( async(req,res)=>{
         res.status(201).json({_id:user.id,email:user.email})
     }else{
         res.status(404)
-        throw new Error("User data is not Vaild")
+        throw new Error("User data is not Valid")
     }
     console.log("Hash Password",hashedPassword,password)
     res.json({message:"Register the user"})
